@@ -3,16 +3,16 @@
 namespace laravelAPI\Http\Controllers;
 
 use Illuminate\Http\Request;
-use laravelAPI\Services\ClientService;
-use laravelAPI\Repositories\ClientRepository;
+use laravelAPI\Services\ProjectNoteService;
+use laravelAPI\Repositories\ProjectNoteRepository;
 
-class ClientController extends Controller
+class ProjectNoteController extends Controller
 {
 
     private $repository;
     private $service;
 
-    public function __construct(ClientService $service, ClientRepository $repository){
+    public function __construct(ProjectNoteService $service, ProjectNoteRepository $repository){
         
         $this->service = $service;
         $this->repository = $repository;
@@ -21,8 +21,8 @@ class ClientController extends Controller
 
     public function index(){
         
-        //Listing clients
-        return $this->service->all();
+        //Listing ProjectNotes
+        return $this->repository->all();
         
     }
     
@@ -35,7 +35,7 @@ class ClientController extends Controller
     public function save(Request $request, $id){
         
         
-        return $this->service->update($request->all(), $id);
+        return $this->repository->where('id', $id)->update($request->all());
         
     }
     

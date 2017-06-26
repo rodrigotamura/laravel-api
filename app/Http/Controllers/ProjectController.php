@@ -3,16 +3,16 @@
 namespace laravelAPI\Http\Controllers;
 
 use Illuminate\Http\Request;
-use laravelAPI\Services\ClientService;
-use laravelAPI\Repositories\ClientRepository;
+use laravelAPI\Services\ProjectService;
+use laravelAPI\Repositories\ProjectRepository;
 
-class ClientController extends Controller
+class ProjectController extends Controller
 {
 
     private $repository;
     private $service;
 
-    public function __construct(ClientService $service, ClientRepository $repository){
+    public function __construct(ProjectService $service, ProjectRepository $repository){
         
         $this->service = $service;
         $this->repository = $repository;
@@ -21,7 +21,7 @@ class ClientController extends Controller
 
     public function index(){
         
-        //Listing clients
+        //Listing Projects
         return $this->service->all();
         
     }
@@ -33,21 +33,18 @@ class ClientController extends Controller
     }
     
     public function save(Request $request, $id){
-        
-        
         return $this->service->update($request->all(), $id);
-        
     }
     
     public function show($id){
         
-        return $this->repository->find($id);
+        return $this->service->show($id);
         
     }
     
     public function destroy($id){
         
-        return $this->repository->destroy($id);
+        return $this->service->destroy($id);
         
     }
     

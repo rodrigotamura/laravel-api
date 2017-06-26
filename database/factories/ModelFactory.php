@@ -12,7 +12,7 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(laravelAPI\User::class, function (Faker\Generator $faker) {
+$factory->define(laravelAPI\Entities\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
@@ -22,12 +22,30 @@ $factory->define(laravelAPI\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
-$factory->define(laravelAPI\Client::class, function (Faker\Generator $faker) {
+$factory->define(laravelAPI\Entities\Client::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'responsable' => $faker->name,
         'phone' => $faker->tollFreePhoneNumber,
         'address' => $faker->address,
         'obs' => $faker->sentence
+    ];
+});
+$factory->define(laravelAPI\Entities\Project::class, function (Faker\Generator $faker) {
+    return [
+        'owner_id' => $faker->numberBetween(1,10),
+        'client_id' => $faker->numberBetween(1,10),
+        'name' => $faker->name,
+        'description' => $faker->sentence,
+        'progress' => $faker->numberBetween(0,100),
+        'status' => $faker->numberBetween(1,3),
+        'due_date' => $faker->dateTime('now')
+    ];
+});
+$factory->define(laravelAPI\Entities\ProjectNote::class, function (Faker\Generator $faker) {
+    return [
+        'project_id' => $faker->numberBetween(1,10),
+        'title' => $faker->word,
+        'note' => $faker->paragraph
     ];
 });

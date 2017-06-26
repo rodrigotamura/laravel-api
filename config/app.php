@@ -163,6 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
@@ -176,6 +177,9 @@ return [
         // laravelAPI\Providers\BroadcastServiceProvider::class,
         laravelAPI\Providers\EventServiceProvider::class,
         laravelAPI\Providers\RouteServiceProvider::class,
+        laravelAPI\Providers\laravelAPIRepositoryProvider::class,
+
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
 
     ],
 

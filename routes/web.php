@@ -13,6 +13,12 @@
 
 Route::get('client', 'ClientController@index');
 Route::post('client', 'ClientController@store');
-Route::post('client/{id}', 'ClientController@save');
+Route::put('client/{id}', 'ClientController@save');
 Route::get('client/{id}', 'ClientController@show');
 Route::delete('client/{id}', 'ClientController@destroy');
+
+Route::get('project', 'ProjectController@index');
+Route::post('project', 'ProjectController@store');
+Route::put('project/{id}', 'ProjectController@save');
+Route::get('project/{id}', 'ProjectController@show');
+Route::delete('project/{id}', 'ProjectController@destroy');
